@@ -12,10 +12,6 @@ p::selection{
     background-color: green;
 }
 
-#fruit li::before{
-    
-}
-
 #apple::after{
     content: "🍎";
 }
