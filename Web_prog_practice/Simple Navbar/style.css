@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(background.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 32px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.navbar a {
+    position: relative;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: .3s;
+}
+
+.navbar a:hover::before {
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 100px;
+}
+
+.box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    width: 70vw;
+    max-width: 400px;
+    max-height: 500px;
+    background: #c1c5d4;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.box .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    color: #000000;
+    letter-spacing: 0.2rem;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.box .content h1 {
+    font-size: clamp(1.7rem, 5vw, 2.1rem);
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6)
+}
+
+.box .content p {
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+}
+
+.box .glass {
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    display: block;
+    pointer-events: none;
+}
+
+.box::before,
+.box::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    z-index: -1;
+}
+
+.box:nth-child(1):before,
+.box:nth-child(1):after {
+    background: conic-gradient(from var(--angle), #e1a8ec, #b477dd, #9677dd, #7977dd, #e1a8ec);
+}
+
+.box:nth-child(2):before,
+.box:nth-child(2):after {
+    background: conic-gradient(from var(--angle), #f35807, #060c21, #36d709, #060c21, #f35807);
+}
+
+.box:nth-child(3):before,
+.box:nth-child(3):after {
+    background: conic-gradient(from var(--angle), #dfff00, #060c21, #9600ff, #060c21, #dfff00);
+}
+
+.box::after {
+    z-index: -2;
+    filter: blur(20px);
+}
+
+.box:hover::before,
+.box:hover::after {
+    animation: glowing-border 3.5s linear infinite;
+}
+
+.box:hover::after {
+    animation: glowing-border 3.5s linear infinite, blur-effect 3.5s linear infinite;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 53deg;
+    inherits: false;
+}
+
+@keyframes glowing-border {
+    from {
+        --angle: 53deg;
+    }
+
+    to {
+        --angle: 413deg;
+    }
+}
+
+@keyframes blur-effect {
+    from {
+        filter: blur(20px);
+    }
+
+    to {
+        filter: blur(19px);
+    }
+}
